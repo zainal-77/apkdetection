@@ -1,18 +1,61 @@
-## Final Project Description: Android Malware Detection Model using Deep Learning
+### Step-by-Step Guide to Running Jupyter Notebook as a Web App
 
-This project serves as the culmination of academic coursework, focusing on the development of a robust model for detecting Android malware through the utilization of deep learning techniques.
+#### 1. Setup Environment and Dependencies
 
-### Objective:
-The primary objective of this project is to design and implement an advanced model capable of effectively identifying and classifying instances of malware within Android applications. By leveraging deep learning methodologies, this project aims to create a powerful tool that can distinguish between malicious and benign software, contributing to enhanced cybersecurity practices for Android-based systems.
+Ensure that you have installed the following dependencies:
+- Jupyter Notebook
+- Flask
+- Required supporting modules
 
-### Key Components:
-1. **Data Collection and Preprocessing:** The project involves gathering diverse datasets consisting of Android applications, separating them into malicious and non-malicious samples, and cleaning and preparing the data for model training.
-2. **Deep Learning Model Development:** Utilizing deep learning frameworks and algorithms, a sophisticated model will be constructed. This model will undergo rigorous training using the prepared datasets to learn patterns and characteristics indicative of malware.
-3. **Model Evaluation and Validation:** The developed model's performance will be thoroughly evaluated using various metrics and validation techniques to ensure its accuracy, precision, recall, and overall effectiveness in distinguishing between malware and non-malware apps.
-4. **Deployment and Integration:** Upon successful development and validation, the model will be deployed to be easily integrated into Android systems or security frameworks, providing real-time or batch processing capabilities for malware detection.
+#### 2. Convert Jupyter Notebook to Jupyter Dashboard
 
-### Significance:
-The significance of this final project lies in its potential to contribute to the ongoing efforts in cybersecurity, specifically in the realm of Android platform security. By harnessing the power of deep learning, the model aspires to enhance the defense mechanisms against evolving and sophisticated malware threats, ultimately safeguarding Android users' devices and sensitive information.
+Convert the Jupyter Notebook (`file.ipynb`) into a Jupyter Dashboard using `voila`.
 
-### Conclusion:
-This final project represents a culmination of academic learning and practical application by designing and implementing an innovative solution using deep learning techniques for the crucial task of detecting Android malware. Through meticulous data analysis, model development, and validation, this project aims to offer a valuable contribution to the field of cybersecurity and mobile device protection.
+Install voila if it's not installed:
+bash
+pip install voila
+
+voila file.ipynb
+
+- This command will initiate a local server and automatically open the notebook as a web app.
+
+#### 3. Integrate Dashboard into Flask Web App
+app.py (Flask Application)
+Add a route in the Flask application (app.py) to display the Jupyter Dashboard:
+
+
+from flask import Flask, render_template
+
+app = Flask(__name__)
+
+# Route to display the Jupyter Dashboard
+@app.route('/dashboard')
+def show_dashboard():
+    return render_template('dashboard.html')
+
+if __name__ == '__main__':
+    app.run(debug=True)
+    
+#### 4. Create HTML Template for Dashboard
+templates/dashboard.html (HTML for Dashboard)
+Create a file named dashboard.html inside the templates folder to display the Jupyter Dashboard:
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Jupyter Dashboard</title>
+</head>
+<body>
+    <h1>Jupyter Dashboard</h1>
+    <iframe src="http://localhost:8866/" width="100%" height="800px" frameborder="0"></iframe>
+</body>
+</html>
+
+#### 5. Run Flask App and Access Dashboard
+Run the Flask application by executing app.py:
+python app.py
+
+Open a web browser and navigate to http://localhost:5000/dashboard. This will display the Jupyter Dashboard, previously converted from the notebook (file.ipynb) using voila.
+
+Utilizing voila to convert the notebook into a dashboard and displaying it via a Flask application provides an interactive experience for running the code from your notebook through the web. Ensure all dependencies and necessary processing for APK detection are properly set within the notebook to execute correctly within the Jupyter Dashboard.
