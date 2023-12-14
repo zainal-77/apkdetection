@@ -37,9 +37,9 @@ if __name__ == '__main__':
     app.run(debug=True)
     
 #### 4. Create HTML Template for Dashboard
+
 templates/dashboard.html (HTML for Dashboard)
 Create a file named dashboard.html inside the templates folder to display the Jupyter Dashboard:
-
 
 <!DOCTYPE html>
 <html>
@@ -51,6 +51,7 @@ Create a file named dashboard.html inside the templates folder to display the Ju
     <iframe src="http://localhost:8866/" width="100%" height="800px" frameborder="0"></iframe>
 </body>
 </html>
+
 
 #### 5. Run Flask App and Access Dashboard
 Run the Flask application by executing app.py:
